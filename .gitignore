@@ -1,0 +1,5 @@
+*.log
+*.h5
+*.csv
+data/
+models/
