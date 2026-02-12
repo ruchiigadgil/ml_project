@@ -7,6 +7,12 @@ stages:
   - validate
 
 before_script:
+  # if the project files live in a subfolder, change into it so CI commands run there
+  - |
+    if [ -f MLOPS_EXP3/ruchigadgil-project/requirements.txt ]; then
+      echo "Found subproject at MLOPS_EXP3/ruchigadgil-project, changing directory";
+      cd MLOPS_EXP3/ruchigadgil-project;
+    fi
   - python -m pip install --upgrade pip
   - python -m pip install -r requirements.txt
 
