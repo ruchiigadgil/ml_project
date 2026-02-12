@@ -1,0 +1,29 @@
+image: python:3.9
+
+stages:
+  - install
+  - test
+  - train
+  - validate
+
+before_script:
+  - python -m pip install --upgrade pip
+  - python -m pip install -r requirements.txt
+
+test_model:
+  stage: test
+  script:
+    - echo "Running unit tests..."
+    - python -m pytest -q tests/
+
+train_model:
+  stage: train
+  script:
+    - echo "Training model..."
+    - python train.py
+
+validate_model:
+  stage: validate
+  script:
+    - echo "Validating model..."
+    - python validate.py
